@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlwebpackPlugin = require("html-webpack-plugin");
 //定义了一些文件夹的路径
 const ROOT_PATH = path.resolve(__dirname);
@@ -58,6 +59,9 @@ module.exports = {
   },
   //添加我们的插件 会自动生成一个html文件
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.myHost': '"http://localhost:3001"'
+    }),
     new HtmlwebpackPlugin({
       title: "Hello World app"
     })
